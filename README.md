@@ -21,3 +21,8 @@ e o agendamento do paciente.</p>
 ![image](https://user-images.githubusercontent.com/60578173/134184663-b0802248-6e3e-488c-8816-4ae4e910491d.png)
 
 <p align="justify"> O Cliente irá vizualizar seus agendamentos, seus historicos de consulta, responder triagem e entrar na sala de atendimento gerada pelo médico, pois o atendimento poderá vizualizar suas receitas prescritas.</p>
+
+
+
+- [X] Cadastro de conta com Google
+- [ ] Cadastro de conta com Google
