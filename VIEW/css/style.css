@@ -1,0 +1,345 @@
+/* tela de login */
+
+body,
+html {
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+body::-webkit-scrollbar {
+    width: 1em;
+    background-color: #0081A9;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #011651;
+    outline: 1px solid #4EB7C9;
+}
+
+
+/*
+ * Card component
+ */
+
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+/*
+ * Form styles
+ */
+
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+    /*background-color: #4d90fe; */
+    background-color: #4eb7c9;
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: #4eb7c9;
+}
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus {
+    color: #50e2fc;
+}
+
+
+/*  */
+
+
+/* meu estilo */
+
+.pop-up {
+    position: absolute;
+    margin-left: 3em;
+    z-index: 4;
+}
+
+.success {
+    background-color: #D4EDDA !important;
+}
+
+.danger {
+    background-color: #F8D7DA !important;
+}
+
+.red-text {
+    color: red;
+}
+
+.btn-opcoes {
+    border: none;
+    background: none;
+    max-width: 2em;
+}
+
+.btn-opcoes img {
+    max-width: 2em;
+}
+
+
+/*  */
+
+
+/* footer estilo */
+
+.first-part-footer {
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    clear: both;
+}
+
+
+/* news letter */
+
+.newsletter {
+    padding: 80px 0;
+    width: 50%;
+}
+
+.newsletter .content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 70%;
+}
+
+.newsletter .content h2 {
+    color: #4eb7c9;
+    margin-bottom: 40px;
+}
+
+.newsletter .content .form-control {
+    height: 50px;
+    border-radius: 50px !important;
+    border-color: #ffffff;
+    border-radius: 50px;
+    margin-right: 1%;
+    border: #4eb7c9 solid 1px;
+}
+
+.newsletter .content .form-control:focus {
+    box-shadow: none;
+    border: 2px solid #4eb7c9;
+}
+
+.newsletter .content .btn {
+    min-height: 50px;
+    border-radius: 50px !important;
+    background: #4eb7c9;
+    color: #fff;
+    font-weight: 600;
+}
+
+#ar-sv-button .btn {
+    min-height: 50px;
+    border-radius: 50px !important;
+    background: #4eb7c9;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+/* end newsletter */
+
+
+/* social media */
+
+.social {
+    padding: 80px 0;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media-logo {
+    width: 30px;
+}
+
+.social-footer {
+    margin-top: 7%;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media-logo {
+    margin: 10px !important;
+}
+
+.footerSocialTitle {
+    color: #4eb7c9;
+    margin-bottom: 40px;
+}
+
+
+/*  */
+
+
+/* break points footer */
+
+@media (max-width: 991px) {
+    .newsletter .content {
+        width: 100%;
+    }
+    .newsletter .content .btn {
+        width: 100%;
+    }
+    .input-group-btn {
+        margin-top: 5%;
+        width: 100%;
+    }
+    .newsletter,
+    .social {
+        width: 80%;
+    }
+    .first-part-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #logo-xs {
+        display: block !important;
+        width: 45%;
+        margin-bottom: 7%;
+    }
+}
+
+
+/*  */
+
+.link-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+/*  */
+
+
+/* google */
+
+@media (max-width:750px) {
+    .google-data {
+        display: none;
+    }
+    .table-medico {
+        font-size: x-small;
+    }
+}
