@@ -56,7 +56,7 @@ class Menu
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li>
-								<a class="btn-opcoes dropdown-item" target = "popup" onclick = "window.open('<?php echo $_SESSION['url'] ?>controller/mudarsenha.php','editar','width=600,height=400')" >
+								<a class="btn-opcoes dropdown-item" target = "popup" onclick = "window.open('<?php echo $_SESSION['url'] ?>CONTROLLER/mudarsenha.php','editar','width=600,height=400')" >
                                     Trocar Senha
                                 </a>
 							</li>
@@ -150,11 +150,11 @@ class Menu
 						}
 					</script>
 					<a class="nav-item nav-link active" href="<?php if ($_SESSION['permissao'] == 0) {
-																	echo $_SESSION['url'] . "controller/logout.php?sair=cliente";
+																	echo $_SESSION['url'] . "CONTROLLER/logout.php?sair=cliente";
 																} else if ($_SESSION['permissao'] == 1) {
-																	echo $_SESSION['url'] . "controller/logout.php?sair=administrador";
+																	echo $_SESSION['url'] . "CONTROLLER/logout.php?sair=administrador";
 																} else if ($_SESSION['permissao'] == 2) {
-																	echo $_SESSION['url'] . "controller/logout.php?sair=medico";
+																	echo $_SESSION['url'] . "CONTROLLER/logout.php?sair=medico";
 																}
 																?>
 					" onclick="signOut();">Sair</a>

@@ -104,7 +104,7 @@ class Buscaragendamedica
                                     <form action="" method="post">
                                         <input type="hidden" name="excluir" value="true">
                                         <input type="hidden" name="id-exclusao" value="<?= $agenda['id'] ?>">
-                                        <button class="btn-opcoes" type="submit"><img src="<?php echo $_SESSION['url'] ?>view/img/excluir.png" alt="excluir"></button>
+                                        <button class="btn-opcoes" type="submit"><img src="<?php echo $_SESSION['url'] ?>VIEW/img/excluir.png" alt="excluir"></button>
                                     </form>
                                 </td>
 
