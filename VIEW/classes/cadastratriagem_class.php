@@ -35,7 +35,8 @@ class Cadastratriagem
 
             if($Triagem->inserir_triagem($id_agendamento,$alergia,$doencacronica,$diabetes,$pressao,$problemarespiratorio,$altura,$peso,$temperatura)){
                 if($Agendamento->concluir_autoavaliacao($id_agendamento)){
-                     header('Location:'. $_SESSION['url']);
+                     //header('Location:'. $_SESSION['url']);
+                     echo "<script> window.location.href =  '".$_SESSION['url']."' </script>" ;
                  }
             }else{
                 echo 'falha';

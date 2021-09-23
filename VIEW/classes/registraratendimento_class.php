@@ -35,22 +35,27 @@ class Registraratendimento
                 echo "link incompativel!!";
             }
         }
+
+        $agendamento = $Agendamento->buscar_agendamento_id($id_agendamento);
+
         if (isset($_POST['finalizar-atendimento']) && $_POST['finalizar-atendimento'] = 'true') {
             $anamnese = filter_input(INPUT_POST, 'anamnese', FILTER_SANITIZE_STRING);
             $hipotese = filter_input(INPUT_POST, 'hipotese', FILTER_SANITIZE_STRING);
             $recomendacoes = filter_input(INPUT_POST, 'recomendacoes', FILTER_SANITIZE_STRING);
             $receita = filter_input(INPUT_POST, 'receita', FILTER_SANITIZE_STRING);
             if($anamnese != "" && $hipotese != ""){
-                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes)){
+                
+                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$_SESSION['id'],$agendamento['id_paciente'])){
                     $Agendamento->concluir_atendimento($id_agendamento);
-                    header("Location:".$_SESSION['url']);
+                    //header("Location:".$_SESSION['url']);
+                    echo "<script> window.location.href =  '".$_SESSION['url']."' </script>" ;
                 }
             }else {
                 echo "falha ao registrar atendimento, campos obrigatorios vazios!!";
             }
         }
         
-        $agendamento = $Agendamento->buscar_agendamento_id($id_agendamento);
+        
 
         if ($agendamento['linkatendimento'] != null) {
             $startControl = 1;

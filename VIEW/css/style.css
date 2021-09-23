@@ -336,10 +336,13 @@ body::-webkit-scrollbar-thumb {
 /* google */
 
 @media (max-width:750px) {
-    .google-data {
-        display: none;
-    }
     .table-medico {
         font-size: x-small;
+    }
+}
+
+@media (max-width:1000px) {
+    .google-data {
+        display: none;
     }
 }
