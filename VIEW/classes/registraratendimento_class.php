@@ -45,7 +45,7 @@ class Registraratendimento
             $receita = filter_input(INPUT_POST, 'receita', FILTER_SANITIZE_STRING);
             if($anamnese != "" && $hipotese != ""){
                 
-                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$_SESSION['id'],$agendamento['id_paciente'])){
+                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$agendamento['id_paciente'])){
                     $Agendamento->concluir_atendimento($id_agendamento);
                     //header("Location:".$_SESSION['url']);
                     echo "<script> window.location.href =  '".$_SESSION['url']."' </script>" ;

@@ -12,14 +12,14 @@ public function __construct()
 }
 
 
-function inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$id_medico,$id_paciente)
+function inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$id_paciente)
 {
 
    
  
 
-    $sql = "INSERT INTO atendimento (id_agendamento,anamnese, receita, hipotese, recomendacoes, created, id_medico, id_paciente) 
-    VALUES(:id_agendamento, :anamnese, :receita, :hipotese, :recomendacoes, now(),:id_medico, :id_paciente)";
+    $sql = "INSERT INTO atendimento (id_agendamento,anamnese, receita, hipotese, recomendacoes, created,  id_paciente) 
+    VALUES(:id_agendamento, :anamnese, :receita, :hipotese, :recomendacoes, now(), :id_paciente)";
     $stmt = $this->PDO->prepare($sql);
 
     $stmt->bindParam(':id_agendamento', $id_agendamento);
@@ -27,7 +27,6 @@ function inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$reco
     $stmt->bindParam(':receita', $receita);
     $stmt->bindParam(':hipotese', $hipotese);
     $stmt->bindParam(':recomendacoes', $recomendacoes);
-    $stmt->bindParam(':id_medico', $id_medico);
     $stmt->bindParam(':id_paciente', $id_paciente);
     
 

@@ -14,7 +14,7 @@ error_reporting(E_ALL); */
 
 <?php
 	
-	$_SESSION['url']			= 'http://localhost:8001/'; // http://10.11.20.145:8001/ // http://localhost:8001/
+	$_SESSION['url']			= 'http://localhost:8001/'; // http://10.11.20.145:8001/ 
 	$_SESSION['masterurl']		= '';
 	$_SESSION['path'] 			= $_SERVER['DOCUMENT_ROOT'];
 	$_SESSION['pcontroller']	= $_SESSION['path'] . '/CONTROLLER';
