@@ -81,7 +81,7 @@ class Registraratendimento
                     </div>
                 </div>
                 <div class="alert alert-info" role="alert">
-                    Selecione o Botão para Gerar a sala, copie e sala gerada e cole no campo a baixo para disponibilizar o link para o paciente.
+                    Selecione o Botão para Gerar a sala, copie o link da sala gerada e cole no campo a baixo para disponibilizar o link para o paciente.
                 </div>
 
                 <form method="post" class="link-form" action="">

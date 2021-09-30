@@ -147,6 +147,28 @@ function concluir_atendimento($id)
   return true;
 }
 
+function cancelar_atendimento($id)
+{
+
+   
+
+    $sql = "UPDATE agendamento SET status = 3
+    WHERE id = :id";
+    $stmt = $this->PDO->prepare($sql);
+
+    $stmt->bindParam(':id', $id);
+
+   // echo "<pre>";print_r($sql); exit;
+    $result = $stmt->execute();
+    
+    if (!$result) {
+        var_dump($stmt->errorInfo());
+        exit;
+    }
+   
+  return true;
+}
+
 
 function inserir_link($id,$link)
 {

@@ -3,8 +3,17 @@ include_once $_SESSION['pmodel'] . '/Paciente.php';
 
 $Paciente->paciente_online($_SESSION['token']);
 
-$agendamentos = $Agendamento->buscar_agendamento_paciente($_SESSION['token']);
 
+
+
+if(isset($_POST['acao']) && $_POST['acao'] == 'cancelar'){
+
+    $Agendamento->cancelar_atendimento($_POST['idagendamento']);
+
+}
+
+
+$agendamentos = $Agendamento->buscar_agendamento_paciente($_SESSION['token']);
 
 /* echo "<pre>"; print_r($agendamentos); exit; */
 ?>
@@ -12,7 +21,7 @@ $agendamentos = $Agendamento->buscar_agendamento_paciente($_SESSION['token']);
 <br>
 <div id="section">
     <div class="container">
-     
+
         <h2>Hoje:</h2>
         <br>
         <div class="flex-row float-right">
@@ -43,12 +52,30 @@ $agendamentos = $Agendamento->buscar_agendamento_paciente($_SESSION['token']);
                             <p class="card-text status_medico"> Status Medico: <span style='color:red;'><i class='fas fa-circle'></i></span> offline </p>
                             <?php if ($agendamento['statusagendamento'] == 0) { ?>
 
-                                <a href="<?php $_SESSION['url'] ?>/cadastratriagem/<?php echo base64_encode($agendamento['idagendamento']) ?>">Autoavaliação</a>
+                                <a class="btn btn-info" href="<?php $_SESSION['url'] ?>/cadastratriagem/<?php echo base64_encode($agendamento['idagendamento']) ?>">Autoavaliação</a>
+                                <br><br>   
+                                <div class="alert alert-info" role="alert">
+                                   <i> clique no botão acima para realizar sua triagem </i>
+                                </div>
+
+                                <form action="" method="POST">                           
+                                <input type="hidden" name="acao" value="cancelar">
+                                <input type="hidden" name="idagendamento" value="<?php echo $agendamento['idagendamento'] ?>">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('ten certeza que deseja cancelar esta consulta?');">Cancelar Consulta</button>
+                                </form>
+                               
                             <?php } ?>
                             <?php if ($agendamento['statusagendamento'] == 1) { ?>
+
                                 <div id="btn-consulta"> <img width="50px" src="<?php echo $_SESSION['url'] ?>view/img/loading.gif" alt="">
                                     <p style="color:green;"> Aguardando consulta...</p>
                                 </div>
+
+                                <form action="" method="POST">
+                                <input type="hidden" name="acao" value="cancelar">
+                                <input type="hidden" name="idagendamento" value="<?php echo $agendamento['idagendamento'] ?>">
+                                <button id="btncancelar" type="submit" class="btn btn-danger" onclick="return confirm('Você tem certeza que deseja cancelar esta consulta?');">Cancelar Consulta</button>
+                                </form>
 
                             <?php } ?>
                         </div>
@@ -118,8 +145,8 @@ $agendamentos = $Agendamento->buscar_agendamento_paciente($_SESSION['token']);
                     if (obj.link != null && obj.statusagendamento == 1) {
 
                         linha.find('div#btn-consulta').html("<a target='_blank' href='" + obj.link + "' class='btn btn-success' >Entra na Sala Médica</a>");
-
-                    }else if(obj.statusagendamento == 2){
+                        linha.find('#btncancelar').css('display', 'none');
+                    } else if (obj.statusagendamento == 2) {
                         linha.find('div#btn-consulta').html("<button  class='btn btn-secondary' >Finalizado</button>");
                     }
 
