@@ -115,6 +115,88 @@ class Atendimentopaciente
 
 
 
+        <?php
+
+}
+
+public function ExibeAgenda()
+{
+    $_objFunctions = new Functions();
+    $_objFunctions->CriaHeader(
+        array(
+            "Telemedicina - Agenda medica",
+            "",
+            ""
+        )
+    );
+
+
+    $_objMenu = new Menu();
+    $_objMenu->ExibeMenu('inicio');
+
+    require_once($_SESSION['pmodel'] . '/Agendamento.php');
+    $historicos = $Agendamento->buscar_todos_agendamentos_paciente();
+
+    /* echo "<pre>"; print_r($historicos); exit; */
+?>
+
+
+    <div class="container">
+    <br><br>
+        <center>
+            <h4>Agenda</h4>
+        </center><br>
+
+        <br>
+            <table class="table table-light">
+                <tr>
+                    <th>Paciente</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Status</th>
+                </tr>
+        <?php foreach ($historicos as $atendimento) {
+
+
+
+?>
+        
+
+          
+                <tr>
+                    <td><?php echo $atendimento['nomepaciente'] ?></td>
+                    <td><?php echo  date('d/m/Y', strtotime($atendimento['data'])); ?></td>
+                    <td><?php echo  date('H:i', strtotime($atendimento['data'])); ?></td>
+                    <td>
+                    <?php
+            if($atendimento['status'] == 0){
+                echo "<b style='color:orange;'>AGENDADO</b>";
+            } else  if($atendimento['status'] == 1){
+                echo "<b style='color:blue;'>TRIADO</b>";
+            } else  if($atendimento['status'] == 2){
+                echo "<b style='color:green;'>CONCLUÍDO</b>";
+            } else  if($atendimento['status'] == 3){
+                echo "<b style='color:red;'>CANCELADO</b>";
+            }?>
+                    </td>
+                </tr>
+       
+            
+          
+
+    
+
+<?php   
+} ?>
+     </table>
+    </div><!-- /container -->
+
+
+
+
+
+
+
 <?php
 
     }
@@ -128,6 +210,8 @@ class Atendimentopaciente
                 $this->ExibeReceitas();
             } else if ($_parametros[0] == 'atendimento') {
                 $this->ExibeAtendimentos();
+            }else if ($_parametros[0] == 'agenda') {
+                $this->ExibeAgenda();
             }
         } else {
             require_once $_SESSION['pview'] . '/404.php';

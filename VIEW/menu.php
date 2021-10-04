@@ -116,7 +116,7 @@ class Menu
 
 							<li><a class="dropdown-item" href="<?php echo $_SESSION['url'] ?>atendimentopaciente/receita">Receitas</a></li>
 							<li><a class="dropdown-item" href="<?php echo $_SESSION['url'] ?>atendimentopaciente/atendimento">Historico de Atendimentos</a></li>
-
+							<li><a class="dropdown-item" href="<?php echo $_SESSION['url'] ?>atendimentopaciente/agenda">Agendamentos</a></li>
 						</ul>
 					</div>
 					<!--  -->

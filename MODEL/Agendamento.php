@@ -252,6 +252,23 @@ function buscar_todos_agendamentos_medico()
 }
 
 
+function buscar_todos_agendamentos_paciente()
+{
+   $id = $_SESSION['id'];
+
+    $sql = "SELECT a.id as idagendamento, a.status as status ,p.id as idpaciente ,p.nome as nomepaciente,a.data_agendamento as data ,m.nome as nomemedico 
+    FROM agendamento a, agenda ag , medico m, paciente p
+    WHERE a.id_agenda = ag.id and a.id_paciente = p.id AND ag.medico = m.id
+    AND p.id = ".$id."
+    ORDER BY a.data_agendamento DESC";
+
+    $result = $this->PDO->query($sql);
+    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+    return $rows;
+}
+
+
 }// fim classe paciente
 
 $Agendamento = new Agendamento();
