@@ -77,7 +77,12 @@ class Registraratendimento
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Gerdor de Sala Google Meet</h5>
-                        <a href="https://meet.google.com/new" target="_blank" class="btn btn-primary">Clique aqui</a>
+                        <!-- <a href="https://meet.google.com/new" target="_blank" class="btn btn-primary">Clique aqui</a> -->
+
+                        <a style="color:#fff;" class="btn btn-primary" target = "popup" onclick = "window.open('https://meet.google.com/new','Atendimento','width=600,height=500')" >
+                        Clique aqui
+                        </a>
+
                     </div>
                 </div>
                 <div class="alert alert-info" role="alert">

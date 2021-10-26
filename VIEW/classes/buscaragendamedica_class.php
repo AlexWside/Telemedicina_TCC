@@ -60,7 +60,8 @@ class Buscaragendamedica
 
                 </div>
 
-                <table class="table table-light">
+                <div class="table-responsive">
+                <table class="table table-striped">
                     <tbody class="list">
 
                         <tr>
@@ -115,6 +116,7 @@ class Buscaragendamedica
                     </tbody>
                 </table>
             </div><!-- /container -->
+            </div>
 
             <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
             <script>

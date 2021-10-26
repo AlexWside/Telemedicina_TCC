@@ -44,7 +44,20 @@ class Cadastrarpaciente
 
             if ($gmail != "" && $nome != "" && $dt_nasc != "" && $cpf != "") {
 
-                $Paciente->inserir_paciente($gmail, $nome, $telefone, $rg, $cpf, $dt_nasc, $endereco, $cidade, $estado, $cep);
+                $Paciente->setEmail($gmail);
+                $Paciente->setNome($nome);
+                $Paciente->setTelefone($telefone);
+                $Paciente->setRg($rg);
+                $Paciente->setCpf($cpf);
+                $Paciente->setDt_nasc($dt_nasc);
+                $Paciente->setEndereco($endereco);
+                $Paciente->setCidade($cidade);
+                $Paciente->setEstado($estado);
+                $Paciente->setCep($cep);
+
+
+                $Paciente->inserir_paciente();
+                
                 $status = "success";
             } else {
                 $status = "error";

@@ -55,8 +55,8 @@ class Buscarmedico
                     <input name="busca" id="busca" class="search" placeholder="Nome ou CRM">
 
                 </div>
-
-                <table class="table table-light">
+                <div class="table-responsive">
+                <table class="table table-striped">
                     <tbody class="list">
 
                         <tr>
@@ -99,6 +99,7 @@ class Buscarmedico
 
                     </tbody>
                 </table>
+                </div>
             </div><!-- /container -->
 
             <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>

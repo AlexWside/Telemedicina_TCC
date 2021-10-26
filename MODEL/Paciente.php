@@ -5,15 +5,106 @@ require_once($_SESSION['pmodel'].'/CONECTION/conexao.php');
 
 class Paciente extends Conexao{
 
+    private $email;
+    private $nome;
+    private $telefone;
+    private $rg;
+    private $cpf;
+    private $dt_nasc;
+    private $endereco;
+    private $cidade;
+    private $estado;
+    private $cep;
+
 
 public function __construct()
 {
     parent::__construct();
 }
 
+/* Get Sets */
+function setEmail ($email){
+    $this->email = $email;
+  }
+  function getEmail(){
+    return $this->email;
+  }
+  
+  function setNome ($nome){
+      $this->nome = $nome;
+  }
+    function getNome(){
+      return $this->nome;
+  }
+  
+  function setTelefone ($telefone){
+      $this->telefone = $telefone;
+  }
+    function getTelefone(){
+      return $this->telefone;
+  }
+  
+  function setRg ($rg){
+      $this->rg = $rg;
+  }
+    function getRg(){
+      return $this->rg;
+  }
+  
+  function setCpf ($cpf){
+      $this->cpf = $cpf;
+  }
+    function getCpf(){
+      return $this->cpf;
+  }
+  
+  function setDt_nasc ($dt_nasc){
+      $this->dt_nasc = $dt_nasc;
+  }
+    function getDt_nasc(){
+      return $this->dt_nasc;
+  }
+  function setEndereco ($endereco){
+      $this->endereco = $endereco;
+  }
+    function getEndereco(){
+      return $this->endereco;
+  }
+  function setCidade ($cidade){
+      $this->cidade = $cidade;
+  }
+    function getCidade(){
+      return $this->cidade;
+  }
+  
+  function setEstado ($estado){
+      $this->estado = $estado;
+  }
+    function getEstado(){
+      return $this->estado;
+  }
+  
+  function setCep ($cep){
+      $this->cep = $cep;
+  }
+    function getCep(){
+      return $this->cep;
+  }
+
 //$gmail,$nome,$rg,$cpf,$dt_nasc,$endereco,$cidade,$estado,$cep
-function inserir_paciente( $email,$nome,$telefone, $rg, $cpf, $dt_nasc, $endereco, $cidade, $estado, $cep)
+function inserir_paciente()
 {
+
+    $email = $this->email;
+    $nome = $this->nome;
+    $telefone = $this->telefone;
+    $rg = $this->rg;
+    $cpf = $this->cpf;
+    $dt_nasc = $this->dt_nasc;
+    $endereco = $this->endereco;
+    $cidade = $this->cidade;
+    $estado = $this->estado;
+    $cep = $this->cep;
 
    
 

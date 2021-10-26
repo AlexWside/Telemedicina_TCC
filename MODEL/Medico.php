@@ -307,8 +307,19 @@ function excluir_medico($id)
 {
    
     $sql = "DELETE FROM medico WHERE id = ".$id."";
-    $this->PDO->query($sql);
+ 
     
+    try {
+
+      $this->PDO->query($sql);
+ 
+    } catch (Exception $e) {
+      echo '
+      <b>Error:</b></br>
+       ',  $e->getMessage(), "\n";
+ 
+    }
+  
 }
 
 }// fim classe medico
