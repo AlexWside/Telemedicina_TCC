@@ -221,7 +221,7 @@ function editar_paciente($id,$email,$nome,$telefone, $rg, $cpf, $dt_nasc, $ender
    
 
     $sql = "UPDATE paciente SET email = :email, nome = :nome, telefone = :telefone,
-     rg = :rg, cpf = :cpf, dt_nasc = :dt_nasc, endereco = :endereco, cidade = :cidade, estado = :estado, cep = :cep
+    rg = :rg, cpf = :cpf, dt_nasc = :dt_nasc, endereco = :endereco, cidade = :cidade, estado = :estado, cep = :cep
     WHERE id = :id";
     $stmt = $this->PDO->prepare($sql);
 
@@ -282,8 +282,21 @@ function buscar_todos_paciente()
 function excluir_paciente($id)
 {
    
+
+
     $sql = "DELETE FROM paciente WHERE id = ".$id."";
-    $this->PDO->query($sql);
+ 
+    
+    try {
+
+      $this->PDO->query($sql);
+ 
+    } catch (Exception $e) {
+      echo '
+      <b>Error:</b> este registro já tem vinculo em outras tabelas</br>
+       ';//,  $e->getMessage(), "\n";
+ 
+    }
     
 }
 

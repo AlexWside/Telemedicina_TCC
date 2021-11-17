@@ -315,8 +315,8 @@ function excluir_medico($id)
  
     } catch (Exception $e) {
       echo '
-      <b>Error:</b></br>
-       ',  $e->getMessage(), "\n";
+      <b>Error:</b> este registro já tem vinculo em outras tabelas</br>
+       ';//,  $e->getMessage(), "\n";
  
     }
   

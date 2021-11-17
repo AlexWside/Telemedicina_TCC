@@ -26,22 +26,17 @@ class Buscarmedico
 
 
 
-        if(isset($_POST['excluir']) && $_POST['excluir'] == 'true')
-        {
+        if (isset($_POST['excluir']) && $_POST['excluir'] == 'true') {
 
-            if($Medico->excluir_medico($_POST['id-exclusao'])){
-                
-            }else{
-                echo "falha ao excluir medico referenciado em outra tabela";
-            }
+            $Medico->excluir_medico($_POST['id-exclusao']);
         }
 
-        
+
         $medicos = $Medico->buscar_todos_medicos();
 
 
 
-        
+
 ?>
 
         <br>
@@ -56,49 +51,49 @@ class Buscarmedico
 
                 </div>
                 <div class="table-responsive">
-                <table class="table table-striped">
-                    <tbody class="list">
-
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>CRM</th>
-                            <th>Telefone</th>
-                            <th>Especialidade</th>
-                            <th>Cadastrado</th>
-                            <th colspan="2">Opções</th>
-                        </tr>
-
-                        <?php foreach ($medicos as $medico) { ?>
+                    <table class="table table-striped">
+                        <tbody class="list">
 
                             <tr>
-                                <td><?= $medico['id'] ?></td>
-                                <td class="nome"><?= $medico['nome'] ?></td>
-                                <td><?= $medico['email'] ?></td>
-                                <td class="crm"><?= $medico['crm'] ?></td>
-                                <td><?= $medico['telefone'] ?></td>
-                                <td><?= $medico['especialidade'] ?></td>
-                                <td><?= $medico['created'] ?></td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="hidden" name="excluir" value="true">
-                                        <input type="hidden" name="id-exclusao" value="<?= $medico['id'] ?>">
-                                        <button class="btn-opcoes" type="submit"><img src="<?php echo $_SESSION['url'] ?>VIEW/img/excluir.png" alt="excluir"></button>
-                                    </form>
-                                </td>
-                                <td>
-                                <a class="btn-opcoes" target = "popup" onclick = "window.open('<?php echo $_SESSION['url'] ?>CONTROLLER/editarmedico.php?id=<?= $medico['id'] ?>','editar','width=600,height=400')" >
-                                    <img src="<?php echo $_SESSION['url'] ?>VIEW/img/editar.png" alt="excluir">
-                                </a>
-
-                                </td>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>CRM</th>
+                                <th>Telefone</th>
+                                <th>Especialidade</th>
+                                <th>Cadastrado</th>
+                                <th colspan="2">Opções</th>
                             </tr>
 
-                        <?php } ?>
+                            <?php foreach ($medicos as $medico) { ?>
 
-                    </tbody>
-                </table>
+                                <tr>
+                                    <td><?= $medico['id'] ?></td>
+                                    <td class="nome"><?= $medico['nome'] ?></td>
+                                    <td><?= $medico['email'] ?></td>
+                                    <td class="crm"><?= $medico['crm'] ?></td>
+                                    <td><?= $medico['telefone'] ?></td>
+                                    <td><?= $medico['especialidade'] ?></td>
+                                    <td><?= $medico['created'] ?></td>
+                                    <td>
+                                        <form action="" method="post">
+                                            <input type="hidden" name="excluir" value="true">
+                                            <input type="hidden" name="id-exclusao" value="<?= $medico['id'] ?>">
+                                            <button class="btn-opcoes" type="submit"><img src="<?php echo $_SESSION['url'] ?>VIEW/img/excluir.png" alt="excluir"></button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a class="btn-opcoes" target="popup" onclick="window.open('<?php echo $_SESSION['url'] ?>CONTROLLER/editarmedico.php?id=<?= $medico['id'] ?>','editar','width=600,height=400')">
+                                            <img src="<?php echo $_SESSION['url'] ?>VIEW/img/editar.png" alt="excluir">
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                            <?php } ?>
+
+                        </tbody>
+                    </table>
                 </div>
             </div><!-- /container -->
 

@@ -68,7 +68,14 @@ class Agendar
             print_r($data_agendamento);
             exit; */
 
-            if(strtotime($data_agendamento) >=  strtotime(date('d/m/Y'))){
+
+            //echo "<pre>"; print_r(strtotime($data_agendamento)); echo "<br>"; echo "<pre>"; print_r(strtotime(date('d/m/Y'))); exit;
+        
+            //$hoje = new DateTime(date('d-m-Y'));
+            //$datainputada = new DateTime($data_agendamento);
+           // echo "<pre>"; print_r($datainputada);exit;  // se der problema eu uso o datetime
+
+            if(strtotime($data_agendamento) >=  strtotime(date('d-m-Y'))){
                 if ($id_agenda != "" && $data_agendamento != "") {
                     $cont = 0;
     
@@ -88,6 +95,7 @@ class Agendar
                     $msg = "informações necessarias não encontradas.";
                 }
             }else{
+                $cont = 0;
                 $status = "error";
                 $msg = "data informada invalida.";
             }
@@ -123,6 +131,7 @@ class Agendar
                     $msg = "falha ao tentar salvar o registro";
                 }
             } else {
+
                 $status = "error";
                 $msg = "Preencha os Campos Obrigatórios";
             }
