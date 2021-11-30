@@ -18,6 +18,7 @@ class Cadastratriagem
 
         require_once($_SESSION['pmodel'] . '/Agendamento.php');
         require_once($_SESSION['pmodel'] . '/Triagem.php');
+        require_once($_SESSION['pmodel'] . '/Atendimento.php');
 
 
         $id_agendamento = base64_decode($_idAgendamento);
@@ -33,11 +34,15 @@ class Cadastratriagem
             $peso = filter_input(INPUT_POST, 'peso', FILTER_SANITIZE_STRING);
             $temperatura = filter_input(INPUT_POST, 'temperatura', FILTER_SANITIZE_STRING);
 
-            if($Triagem->inserir_triagem($id_agendamento,$alergia,$doencacronica,$diabetes,$pressao,$problemarespiratorio,$altura,$peso,$temperatura)){
-                if($Agendamento->concluir_autoavaliacao($id_agendamento)){
+
+            $id_triagem = $Triagem->inserir_triagem($alergia,$doencacronica,$diabetes,$pressao,$problemarespiratorio,$altura,$peso,$temperatura);
+            if($id_triagem != ""){
+                if($Agendamento->concluir_autoavaliacao($id_agendamento) && $Atendimento->criar_atendimento($id_agendamento, $id_triagem)){
                      //header('Location:'. $_SESSION['url']);
                      echo "<script> window.location.href =  '".$_SESSION['url']."' </script>" ;
                  }
+                 
+
             }else{
                 echo 'falha';
             }

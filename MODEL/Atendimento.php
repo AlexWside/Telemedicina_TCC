@@ -12,22 +12,54 @@ public function __construct()
 }
 
 
-function inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$id_paciente)
+
+function criar_atendimento($id_agendamento,$id_triagem)
+{
+
+   
+  //echo "<pre>"; print_r($id_agendamento); exit;
+
+    $sql = "INSERT INTO atendimento (id_agendamento, id_triagem) 
+    VALUES(:id_agendamento, :id_triagem)";
+    $stmt = $this->PDO->prepare($sql);
+
+    $stmt->bindParam(':id_agendamento', $id_agendamento);
+    $stmt->bindParam(':id_triagem', $id_triagem);
+    
+
+
+   // echo "<pre>";print_r($sql); exit;
+    $result = $stmt->execute();
+    
+    if (!$result) {
+        var_dump($stmt->errorInfo());
+        exit;
+    }
+   
+  return true;
+}
+
+
+
+function inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes)
 {
 
    
  
 
-    $sql = "INSERT INTO atendimento (id_agendamento,anamnese, receita, hipotese, recomendacoes, created,  id_paciente) 
-    VALUES(:id_agendamento, :anamnese, :receita, :hipotese, :recomendacoes, now(), :id_paciente)";
+    $sql = "UPDATE atendimento 
+    SET anamnese =  :anamnese , receita = :receita , hipotese = :hipotese, recomendacoes = :recomendacoes, created = now()
+    WHERE  id_agendamento  = :id_agendamento";
+   
     $stmt = $this->PDO->prepare($sql);
 
-    $stmt->bindParam(':id_agendamento', $id_agendamento);
+   
     $stmt->bindParam(':anamnese', $anamnese);
     $stmt->bindParam(':receita', $receita);
     $stmt->bindParam(':hipotese', $hipotese);
     $stmt->bindParam(':recomendacoes', $recomendacoes);
-    $stmt->bindParam(':id_paciente', $id_paciente);
+    $stmt->bindParam(':id_agendamento', $id_agendamento);
+
     
 
 

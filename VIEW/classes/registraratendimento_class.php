@@ -19,7 +19,7 @@ class Registraratendimento
         require_once($_SESSION['pmodel'] . '/Atendimento.php');
         require_once($_SESSION['pmodel'] . '/Agendamento.php');
         require_once($_SESSION['pmodel'] . '/Triagem.php');
-        require_once($_SESSION['pmodel'] . '/Paciente.php');
+        
 
 
         $id_agendamento = base64_decode($_idAgendamento);
@@ -45,7 +45,7 @@ class Registraratendimento
             $receita = filter_input(INPUT_POST, 'receita', FILTER_SANITIZE_STRING);
             if($anamnese != "" && $hipotese != ""){
                 
-                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes,$agendamento['id_paciente'])){
+                if($Atendimento->inserir_atendimento($id_agendamento,$anamnese,$receita, $hipotese,$recomendacoes)){
                     $Agendamento->concluir_atendimento($id_agendamento);
                     //header("Location:".$_SESSION['url']);
                     echo "<script> window.location.href =  '".$_SESSION['url']."' </script>" ;
@@ -58,6 +58,8 @@ class Registraratendimento
         
 
         if ($agendamento['linkatendimento'] != null) {
+
+            require_once($_SESSION['pmodel'] . '/Paciente.php');
             $startControl = 1;
             $triagem = $Triagem->buscar_triagem_agendamento_id($id_agendamento);
             $paciente = $Paciente->buscar_paciente_id($agendamento['id_paciente']);

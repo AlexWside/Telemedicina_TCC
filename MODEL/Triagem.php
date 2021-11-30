@@ -12,17 +12,16 @@ public function __construct()
 }
 
 
-function inserir_triagem($id_agendamento,$alergia,$doencacronica, $diabetes,$pressao, $problemarespiratorio, $altura, $peso, $temperatura)
+function inserir_triagem($alergia,$doencacronica, $diabetes,$pressao, $problemarespiratorio, $altura, $peso, $temperatura)
 {
 
    
  
 
-    $sql = "INSERT INTO triagem (id_agendamento,alergia, doencacronica, diabetes, pressao, problemarespiratorio, altura, peso, temperatura, created) 
-    VALUES(:id_agendamento, :alergia, :doencacronica, :diabetes, :pressao,:problemarespiratorio,:altura,:peso,:temperatura, now())";
+    $sql = "INSERT INTO triagem (alergia, doencacronica, diabetes, pressao, problemarespiratorio, altura, peso, temperatura, created) 
+    VALUES( :alergia, :doencacronica, :diabetes, :pressao,:problemarespiratorio,:altura,:peso,:temperatura, now())";
     $stmt = $this->PDO->prepare($sql);
 
-    $stmt->bindParam(':id_agendamento', $id_agendamento);
     $stmt->bindParam(':alergia', $alergia);
     $stmt->bindParam(':doencacronica', $doencacronica);
     $stmt->bindParam(':diabetes', $diabetes);
@@ -41,7 +40,7 @@ function inserir_triagem($id_agendamento,$alergia,$doencacronica, $diabetes,$pre
         exit;
     }
    
-  return true;
+    return $this->PDO->lastInsertId();
 }
 
 
@@ -51,7 +50,8 @@ function inserir_triagem($id_agendamento,$alergia,$doencacronica, $diabetes,$pre
 function buscar_triagem_agendamento_id($id)
 {
 
-    $stmt = $this->PDO->prepare("SELECT * FROM triagem WHERE id_agendamento = :id ");
+    $stmt = $this->PDO->prepare("SELECT t.* FROM triagem t, atendimento a WHERE  a.id_agendamento = :id 
+    and a.id_triagem = t.id");
     $stmt->execute(['id' => $id]); 
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
